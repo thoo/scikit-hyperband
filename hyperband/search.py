@@ -323,7 +323,7 @@ class HyperbandSearchCV(BaseSearchCV):
     def __init__(self, estimator, param_distributions,
                  resource_param='n_estimators', eta=3, min_iter=1,
                  max_iter=81, skip_last=0, scoring=None, n_jobs=1,
-                 iid=True, refit=True, cv=None,fit_params=None,
+                 iid=True, refit=True, cv=None,
                  verbose=0, pre_dispatch='2*n_jobs', random_state=None,
                  error_score='raise', return_train_score=False):
         self.param_distributions = param_distributions
@@ -333,7 +333,7 @@ class HyperbandSearchCV(BaseSearchCV):
         self.max_iter = max_iter
         self.skip_last = skip_last
         self.random_state = random_state
-        self.fit_params = fit_params
+        # self.fit_params = fit_params
 
         super(HyperbandSearchCV, self).__init__(
             estimator=estimator, scoring=scoring, 

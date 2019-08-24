@@ -403,7 +403,7 @@ class HyperbandSearchCV(BaseSearchCV):
                 print('Skipping the last {0} successive halving iterations'
                       .format(self.skip_last))
 
-    def fit(self, X, y=None, groups=None):
+    def fit(self, X, y=None, groups=None, **fit_params):
         """Run fit with all sets of parameters.
 
         Parameters
@@ -419,8 +419,11 @@ class HyperbandSearchCV(BaseSearchCV):
         groups : array-like, with shape (n_samples,), optional
             Group labels for the samples used while splitting the dataset into
             train/test set.
+
+        **fit_params : dict of string -> object
+            Parameters passed to the ``fit`` method of the estimator
         """
-        super().fit(X, y, groups)
+        super().fit(X, y, groups, **fit_params)
 
         s_max = int(np.floor(np.log(self.max_iter / self.min_iter) / np.log(self.eta)))
         B = (s_max + 1) * self.max_iter
